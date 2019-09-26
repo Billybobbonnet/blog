@@ -1,11 +1,9 @@
-
 @namespace svg "http://www.w3.org/2000/svg";
 
 body {
   font-family: 'Raleway', sans-serif;
-  background-color: $backgroundColor!important;
   min-height: 100%;
-  color: $backgroundColor;
+ @include body-background;
   /* useless but cool
   @include xxl-width(){
   @include define-breakpoint("xxl-width");
@@ -125,12 +123,13 @@ svg|g.hide-me-from-older-browsers {
   padding-top: 0;
   text-align: center;
   background-color: $backgroundColor;
-
   .grid .column span {
     // retirer les spans en modle mobile
     @media #{$md-width} {
       display: none!important;
     }
+font-size: 0.7rem;
+text-align: center;
     opacity: 0;
     -webkit-transition: 0.3s opacity ease, 1s transform ease;
     -moz-transition: 0.3s opacity ease, 1s transform ease;
@@ -165,17 +164,20 @@ svg|g.hide-me-from-older-browsers {
   @include body-background;
   box-shadow: none;
 }
+
 .contact-form {
   .actions {
     text-align: right;
+
     .button {
-      color:$backgroundColor;
+      color: $backgroundColor;
     }
   }
 }
+
 .sidebar {
   .blog-title-container:not(.sub.header) {
-    font-size: 3em!important;
+    font-size: 2.5em!important;
   }
 
   .logo-container {
@@ -188,14 +190,13 @@ svg|g.hide-me-from-older-browsers {
       height: 100%;
     }
 
-    &:before {
-      opacity: 0;
-    }
+    &:before {}
 
     &:hover {
       background-color: transparent!important;
     }
   }
+
   .ui.link.list.left-menu-content {
     text-align: center;
 
@@ -205,7 +206,7 @@ svg|g.hide-me-from-older-browsers {
       font-size: 1.2em;
       -webkit-transition: color 0.2s;
       transition: color 0.2s;
-      color: #fff;
+      color: rgba(0,0,0,.87);
 
       &:hover {
         color: $greenyay;
@@ -213,12 +214,13 @@ svg|g.hide-me-from-older-browsers {
     }
   }
 }
+
 .left-nav {
   position: fixed!important;
   top: 2px;
   left: 0;
   bottom: 0;
-  padding: 3em 0em 0 1em;
+  padding: 3em 0 0 1em;
   width: 30%;
   z-index: 10;
   @include body-background;
@@ -267,16 +269,9 @@ svg|g.hide-me-from-older-browsers {
       height: 24%;
     }
 
-    &:before {
-      opacity: 0;
-    }
-
     &:hover {
       background-color: transparent!important;
     }
-  }
-  .blog-title-container:not(.sub.header) {
-    font-size: 3em!important;
   }
 
   .ui.link.list.left-menu-content {
@@ -288,7 +283,7 @@ svg|g.hide-me-from-older-browsers {
       font-size: 1.2em;
       -webkit-transition: color 0.2s;
       transition: color 0.2s;
-      color: #fff;
+      color: rgba(66, 66, 66, 0.87);
 
       &:hover {
         color: $greenyay;
@@ -305,30 +300,31 @@ svg|g.hide-me-from-older-browsers {
     background-color: $greenyay;
   }
 }
+
 .share-buttons .ui.big.circular.button .icon {
-  margin-right: 0em;
+  margin-right: 0;
 }
+
 .pusher {
   min-height: 100%;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
-  background-color: $backgroundColor!important;
+  @include body-background;
 
   .right-content {
     min-height: 100%;
-    padding: 3em 6em 0 0em;
+    padding: 3em 6em 0 0;
 
     .featured {
       border-left-width: 0.5em !important;
-      border-left-color: #c9de43 !important;
+      border-left-color: $greenyay !important;
     }
 
     .extra.content {
       text-align: center;
       padding-top: 1em;
-
     }
 
     .segment:first-of-type {
@@ -345,14 +341,14 @@ svg|g.hide-me-from-older-browsers {
       padding-top: 1em;
       display: none;
       width: 100%;
-      background-color: $backgroundColor;
+      @include body-background;
       background: -moz-linear-gradient(top, rgba(72,85,99,1) 0%, rgba(72,85,99,1) 82%, rgba(72,85,99,0) 100%);
       /* FF3.6-15 */
       background: -webkit-linear-gradient(top, rgba(72,85,99,1) 0%,rgba(72,85,99,1) 82%,rgba(72,85,99,0) 100%);
       /* Chrome10-25,Safari5.1-6 */
       background: linear-gradient(to bottom, rgba(72,85,99,1) 0%,rgba(72,85,99,1) 82%,rgba(72,85,99,0) 100%);
       /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr= '#485563', endColorstr='#00485563',GradientType=0 );
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=  '#485563', endColorstr='#00485563',GradientType=0 );
       /* IE6-9 */
       &.sticked {}
       @media #{$xxl-width} {
@@ -372,12 +368,12 @@ svg|g.hide-me-from-older-browsers {
       width: 60%;
       margin-left: 20%;
       margin-top: 0;
-      padding: 3em 0 6em 0em;
+      padding: 3em 0 6em;
     }
     @media #{$xl-width} {
       width: 60%;
       margin-left: 30%;
-      padding: 3em 0 6em 0em;
+      padding: 3em 0 6em;
     }
     @media #{$lg-width} {
       width: 60%;
@@ -399,69 +395,96 @@ svg|g.hide-me-from-older-browsers {
     @media #{$s-portrait} {
       width: 100%;
       margin-left: 0;
-      padding: 3em 0  6em 0;
+      padding: 3em 0 6em;
     }
     @media #{$s-landscape} {
       width: 100%;
       margin-left: 0;
-      padding: 3em 0 6em 0;
+      padding: 3em 0 6em;
     }
   }
 }
 
 .logo {}
+.links {
+ transition: transform 1s;
+}
+.links i:hover {
+  transform-origin: center;
+   transform: scale(1.5);
+   color:$greenyay;
+}
+.blog-sub-title {
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 2em;
+}
 
 .blog-title-container {
-  &:before {
-    opacity: 0;
+
+    font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.5em;
+  line-height: 1.5em;
+  font-weight: bold;
+   & .blog-title-text {
+     font-weight: bold;
+     color: $greenyay;
+   }
+}
+
+.blog-title {
+  padding: 0 0 0 1.15em;
+
+
+  &:hover {
+    .icon {
+      opacity: 1;
+    }
   }
 
-  .blog-title {
-    padding: 0 0 0 1.15em;
-
-    &:hover {
-      .icon {
-        opacity: 1;
-      }
-    }
-
-    .icon {
-      opacity: 0;
-      transition: opacity 0.5s ease-out;
-      -moz-transition: opacity 0.5s ease-out;
-      -webkit-transition: opacity 0.5s ease-out;
-      -o-transition: opacity 0.5s ease-out;
-    }
+  .icon {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    -moz-transition: opacity 0.5s ease-out;
+    -webkit-transition: opacity 0.5s ease-out;
+    -o-transition: opacity 0.5s ease-out;
   }
 }
 
 .box {
   position: relative;
 }
+
 .corner-ribbon {
   position: absolute;
-  right: -5px; top: -5px;
+  right: -5px;
+  top: -5px;
   z-index: 1;
   overflow: hidden;
-  width: 200px; height: 200px;
+  width: 200px;
+  height: 200px;
   text-align: right;
   @media #{$md-width} {
-  display:none;
+    display: none;
   }
+
   span {
-   font-size: 16px;
-   font-weight: bold;
-   color: $backgroundColor;
-   text-transform: uppercase;
-   text-align: center;
-   line-height: 40px;
-   transform: rotate(45deg);
-   -webkit-transform: rotate(45deg);
-   width: 300px;
-   display: block;
-   background: $greenyay;
-   box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
-   position: absolute;
-   top: 65px; right: -65px;
- }
+    font-size: 16px;
+    font-weight: bold;
+    color: $backgroundColor;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 40px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 300px;
+    display: block;
+    background: $greenyay;
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 65px;
+    right: -65px;
+  }
 }

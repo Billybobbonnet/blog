@@ -1,33 +1,27 @@
-{% assign registeredTags = "Jekyll|Recipe|Event|Meteor|Algorithm|Web Design|UX|Vanilla JS|UX|Recipe|Website XP" | split: "|" %}
-{% assign availableColors = "green|violet|purple|pink|olive|black"  | split: "|" %}
+{% assign registeredTags = "Actualites|Announce|Event|Update" | split: "|" %}
+{% assign availableColors = "green|violet|cyan|pink|olive|black"  | split: "|" %}
 {% assign unregisteredTags = ""  | split: "" %}
 {% for post in site.posts reversed %}
-  {% for tag in post.tags %}
-    {% if registeredTags contains tag %}
-    {% else %}
-      {% assign unregisteredTags = unregisteredTags  | push: tag %}
-    {% endif %}
-  {% endfor %}
+{% for tag in post.tags %}
+{% if registeredTags contains tag %}
+{% else %}
+{% assign unregisteredTags = unregisteredTags  | push: tag %}
+{% endif %}
+{% endfor %}
 {% endfor %}
 {% for tag in include.tags %}
-  {% case tag %}
-  {% when "News" %} <a class="ui tag label">News</a>
-  {% when "Jekyll" %}<a class="ui cyan tag label">Jekyll</a>
-  {% when "Meteor" %}<a class="ui red tag label">Meteor</a>
-  {% when "Web design" %}<a class="ui yellow tag label">Web Design</a>
-  {% when "Event" %}<a class="ui orange tag label">Event</a>
-  {% when "Algorithm" %}<a class="ui blue tag label">Algorithms</a>
-  {% when "Vanilla JS" %}<a class="ui pink tag label">Vanilla JS</a>
-  {% when "UX" %}<a class="ui brown tag label">Vanilla JS</a>
-  {% when "Recipe" %}<a class="ui grey tag label">Recipe</a>
-  {% when "Website XP" %}<a class="ui teal tag label">Website XP</a>
-  {% else %}
-    {% for unregisteredTag in unregisteredTags %}
-      {% if tag == unregisteredTag %}
-        {% for color in availableColors limit:1 offset:forloop.index %}
-          <a class="ui tag label {{ color }}">{{ tag }}</a>
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
-  {% endcase %}
+{% case tag %}
+{% when "News" %} <a class="ui tag label green">Actualités</a>
+{% when "Event" %}<a class="ui orange tag label">Évènements</a>
+{% when "Announce" %}<a class="ui cyan tag label">Annonces</a>
+{% when "Update" %}<a class="ui olive tag label">Mises à jour</a>
+{% else %}
+{% for unregisteredTag in unregisteredTags %}
+{% if tag == unregisteredTag %}
+{% for color in availableColors limit:1 offset:forloop.index %}
+<a class="ui tag label {{ color }}">{{ tag }}</a>
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endcase %}
 {% endfor %}

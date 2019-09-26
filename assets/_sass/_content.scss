@@ -26,6 +26,10 @@ blockquote p {
   transition: background 0.1s cubic-bezier(.33,.66,.66,1);
   text-decoration: none;
   cursor: default;
+  &.audio.playing {
+    background: $greenyay;
+  }
+
 }
 
 .altion:hover {
@@ -36,14 +40,14 @@ blockquote p {
 .inline.dropdown .menu {
   background-color: $backgroundColor;
   & .item:not(.active):hover {
-  background-color:  rgba(255,255,255,.15);
+    background-color:  rgba(25,25,25,.80);
   }
- & .active.item a::before {
+  & .active.item a::before {
     content: '\003E'
   }
 }
 
- .image-component h6 {
+.image-component h6 {
   text-align: center;
   clear: both;
   padding-top: 0.5em;
